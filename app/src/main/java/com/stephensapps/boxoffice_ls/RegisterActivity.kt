@@ -1,14 +1,18 @@
 package com.stephensapps.boxoffice_ls
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.SignInMethodQueryResult
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
     //setting up val for the firebase authentication
@@ -20,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
 
         //Initializing variable to get the current instance to create the new account
         auth = FirebaseAuth.getInstance()
+        val db = Firebase.firestore
         //Initializing vals to get the user inputted text
         val email = findViewById<EditText>(R.id.emailEditText)
         val password = findViewById<EditText>(R.id.passwordEditText)
@@ -29,7 +34,6 @@ class RegisterActivity : AppCompatActivity() {
         val lastName = findViewById<EditText>(R.id.lastNameEditText)
         val submit = findViewById<Button>(R.id.submitButton)
         val signIn = findViewById<Button>(R.id.signInButton)
-        val logo = findViewById<ImageView>(R.id.logoImage)
 
         /**
          * Animations
@@ -113,6 +117,26 @@ class RegisterActivity : AppCompatActivity() {
                                     if (task.isSuccessful) {
                                         Toast.makeText(baseContext, "Sign-up successful", Toast.LENGTH_SHORT)
                                             .show()
+
+                                        val userID = FirebaseAuth.getInstance().currentUser.uid
+
+                                        val user = hashMapOf(
+                                            "firstName" to firstName.text.toString(),
+                                            "lastName" to lastName.text.toString(),
+                                            "email" to email.text.toString()
+                                        )
+
+                                        db.collection("users").document(userID)
+                                            .set(user)
+                                            .addOnSuccessListener { documentReference ->
+                                                Toast.makeText(baseContext, "User added to firestore", Toast.LENGTH_SHORT)
+                                                    .show()
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Toast.makeText(baseContext, e.toString(), Toast.LENGTH_SHORT)
+                                                    .show()
+                                            }
+
                                         //Bring you the the main activity once the registration is successful
                                         intent = Intent(this, MainActivity::class.java)
                                         startActivity(intent)
