@@ -1,7 +1,9 @@
 package com.stephensapps.boxoffice_ls
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +20,12 @@ class FirstFragment:Fragment(R.layout.fragment_first) {
     private lateinit var db: FirebaseFirestore
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?{
+        val view = inflater.inflate(R.layout.fragment_first,container,false)
+
 
         recyclerView = view.findViewById(R.id.recyclerViewFeed)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
 
         postArrayList = arrayListOf()
@@ -32,6 +35,8 @@ class FirstFragment:Fragment(R.layout.fragment_first) {
         recyclerView.adapter = adapter
 
         EventChangeListener()
+
+        return view;
     }
 
     private fun EventChangeListener() {

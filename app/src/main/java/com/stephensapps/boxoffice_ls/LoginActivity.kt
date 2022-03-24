@@ -51,7 +51,6 @@ class LoginActivity : AppCompatActivity() {
         logo.translationY = 75f
         logo.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
 
-
         submit.setOnClickListener {
 
             //setting default colors to text
