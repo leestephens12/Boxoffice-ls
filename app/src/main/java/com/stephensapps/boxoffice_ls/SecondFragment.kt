@@ -2,10 +2,7 @@ package com.stephensapps.boxoffice_ls
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -19,18 +16,21 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
 
         val post = view.findViewById<Button>(R.id.postBtn)
         val movieName = view.findViewById<EditText>(R.id.editTextMovieName)
-        val rating = view.findViewById<RadioGroup>(R.id.rdoMovieRating)
+        val ratingGroup = view.findViewById<RadioGroup>(R.id.rdoMovieRating)
+        val ratingID: Int = ratingGroup.checkedRadioButtonId
         val description = view.findViewById<EditText>(R.id.editTextDescription)
 
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         val db = Firebase.firestore
 
         post.setOnClickListener {
+            //Toast.makeText(context, rating, Toast.LENGTH_LONG)
 
-            val userID = FirebaseAuth.getInstance().currentUser.uid
+            val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
             val post = hashMapOf(
-                "MovieName" to movieName.text.toString(),
+                "movieName" to movieName.text.toString(),
+                "movieRating" to ratingID.toString(),
                 "description" to description.text.toString()
             )
 

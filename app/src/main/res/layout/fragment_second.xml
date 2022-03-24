@@ -55,8 +55,8 @@
 
     <RadioGroup
         android:id="@+id/rdoMovieRating"
-        android:layout_width="311dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,36 +67,36 @@
 
         <RadioButton
             android:id="@+id/characters1"
-            android:layout_width="62dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1"
             tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/characters2"
-            android:layout_width="62dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2"
             tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/characters3"
-            android:layout_width="62dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="3"
             tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/characters4"
-            android:layout_width="62dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4"
             tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/characters5"
-            android:layout_width="58dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:text="5"
             tools:ignore="TouchTargetSizeCheck" />
@@ -127,7 +127,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

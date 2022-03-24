@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.passwordEditText)
         val errorText = findViewById<TextView>(R.id.errorTextView)
         val logo = findViewById<ImageView>(R.id.logoImage)
+        val google = findViewById<ImageButton>(R.id.googleBtn)
 
         /**
          *Animations
@@ -48,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
         logo.alpha = 0f
         logo.translationY = 75f
         logo.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
+
 
         submit.setOnClickListener {
 

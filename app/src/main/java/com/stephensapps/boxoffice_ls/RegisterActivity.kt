@@ -118,7 +118,7 @@ class RegisterActivity : AppCompatActivity() {
                                         Toast.makeText(baseContext, "Sign-up successful", Toast.LENGTH_SHORT)
                                             .show()
 
-                                        val userID = FirebaseAuth.getInstance().currentUser.uid
+                                        val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
                                         val user = hashMapOf(
                                             "firstName" to firstName.text.toString(),
