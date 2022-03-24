@@ -72,19 +72,19 @@ class RegisterActivity : AppCompatActivity() {
         submit.setOnClickListener {
 
             //Resetting Text colors to their original values
-            email.setTextColor(Color.WHITE)
+            /*email.setTextColor(Color.WHITE)
             password.setTextColor(Color.WHITE)
             confirmPassword.setTextColor(Color.WHITE)
             firstName.setTextColor(Color.WHITE)
-            lastName.setTextColor(Color.WHITE)
+            lastName.setTextColor(Color.WHITE)*/
             errorText.setTextColor(Color.RED)
 
             //Setting hints back to original color
-            email.setHintTextColor(Color.WHITE)
+            /*email.setHintTextColor(Color.WHITE)
             password.setHintTextColor(Color.WHITE)
             confirmPassword.setHintTextColor(Color.WHITE)
             firstName.setHintTextColor(Color.WHITE)
-            lastName.setHintTextColor(Color.WHITE)
+            lastName.setHintTextColor(Color.WHITE)*/
 
             //Error checking to make it more user friendly to show which fields are not filled out
             if(email.text.toString().isEmpty()) {

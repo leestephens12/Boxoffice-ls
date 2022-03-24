@@ -35,6 +35,10 @@ class LoginActivity : AppCompatActivity() {
         submit.translationY = 75f
         submit.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
 
+        google.alpha = 0f
+        google.translationY = 75f
+        google.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
+
         register.alpha = 0f
         register.translationY = 75f
         register.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
@@ -54,10 +58,10 @@ class LoginActivity : AppCompatActivity() {
         submit.setOnClickListener {
 
             //setting default colors to text
-            email.setHintTextColor(Color.WHITE)
+            /*email.setHintTextColor(Color.WHITE)
             password.setHintTextColor(Color.WHITE)
             email.setTextColor(Color.WHITE)
-            password.setTextColor(Color.WHITE)
+            password.setTextColor(Color.WHITE)*/
             errorText.setTextColor(Color.RED)
 
             if(email.text.toString().isEmpty()) {
