@@ -29,6 +29,7 @@ class ThirdFragment:Fragment(R.layout.fragment_third) {
         auth = FirebaseAuth.getInstance()
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
+
         recyclerView = view.findViewById(R.id.recyclerViewFeed)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
