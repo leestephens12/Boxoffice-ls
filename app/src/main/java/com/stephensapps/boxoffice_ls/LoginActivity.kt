@@ -1,14 +1,22 @@
 package com.stephensapps.boxoffice_ls
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -54,6 +62,8 @@ class LoginActivity : AppCompatActivity() {
         logo.alpha = 0f
         logo.translationY = 75f
         logo.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
+
+
 
         submit.setOnClickListener {
 
@@ -110,4 +120,5 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }

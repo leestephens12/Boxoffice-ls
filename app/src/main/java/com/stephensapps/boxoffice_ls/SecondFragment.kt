@@ -34,26 +34,21 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
                 "description" to description.text.toString()
             )
 
-            db.collection("posts").get()
-                .addOnSuccessListener { document ->
-                    if(document != null) {
-                        val counter = document.size() + 1
-                        db.collection("posts").document(userID + counter.toString())
-                            .set(post)
-                            .addOnSuccessListener { documentReference ->
-                                Toast.makeText(context, "post added to firestore", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                    }else {
-                        Toast.makeText(context, "No documents available", Toast.LENGTH_SHORT).show()
-                    }
-                }.addOnFailureListener{e->
-                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
+
+            /*
+                Uploads users post to the db in a subclass collection
+             */
+            db.collection("users").document(userID).collection("posts").document()
+                .set(post)
+                .addOnSuccessListener { documentReference ->
+                    Toast.makeText(context, "post added to firestore", Toast.LENGTH_SHORT)
+                        .show()
                 }
+                .addOnFailureListener { e ->
+                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+
         }
     }
 

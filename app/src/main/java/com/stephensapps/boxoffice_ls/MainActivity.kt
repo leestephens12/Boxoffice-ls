@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
         val thirdFragment = ThirdFragment();
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        setCurrentFragment(firstFragment);
+        setCurrentFragment(thirdFragment);
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.profileIcon->setCurrentFragment(firstFragment)
+                R.id.navIcon->setCurrentFragment(firstFragment)
                 R.id.addIcon->setCurrentFragment(secondFragment)
-                R.id.navIcon->setCurrentFragment(thirdFragment)
+                R.id.profileIcon->setCurrentFragment(thirdFragment)
             }
             true
         }
