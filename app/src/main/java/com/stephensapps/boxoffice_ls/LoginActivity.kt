@@ -1,5 +1,6 @@
 package com.stephensapps.boxoffice_ls
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
@@ -20,6 +21,13 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+
+    //Attempt at google button did not work
+    /*private val signInLauncher = registerForActivityResult(
+        FirebaseAuthUIActivityResultContract()
+    ) { result ->
+        this.googleSignInResult(result)
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
         logo.alpha = 0f
         logo.translationY = 75f
         logo.animate().alpha(1f).translationYBy(-75f).setDuration(1500)
-
 
 
         submit.setOnClickListener {
@@ -113,6 +120,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        //Attempt at google button did not work
+        google.setOnClickListener {
+
+        }
+
         //if users don't have an account they can register here
         register.setOnClickListener {
             intent = Intent(this, RegisterActivity::class.java)
@@ -120,5 +132,19 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    /*
+    private fun googleSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+        val response = result.idpResponse
+        if(result.resultCode == RESULT_OK) {
+            val user = FirebaseAuth.getInstance().currentUser
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
+        }else {
+            Toast.makeText(this, "signin Failed", Toast.LENGTH_LONG).show()
+        }
+    }*/
+
 
 }
