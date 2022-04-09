@@ -17,9 +17,7 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
 
         val post = view.findViewById<Button>(R.id.postBtn)
         val movieName = view.findViewById<EditText>(R.id.editTextMovieName)
-        val ratingGroup = view.findViewById<RadioGroup>(R.id.rdoMovieRating)
-        val ratingID: Int = ratingGroup.checkedRadioButtonId
-        val radioBtn = view.findViewById<RadioButton>(ratingID)
+        val rating = view.findViewById<EditText>(R.id.editTextRating)
         val description = view.findViewById<EditText>(R.id.editTextDescription)
         val errorText = view.findViewById<TextView>(R.id.errorText)
 
@@ -31,9 +29,12 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
             if (movieName.text.isEmpty()) {
                 errorText.text = "Field must be complete"
                 movieName.setHintTextColor(Color.RED)
-            } else if (ratingID != -1) {
+            } else if (rating.text.isEmpty()) {
                 errorText.text = "Field must be complete"
-                ratingGroup.setBackgroundColor(Color.RED)
+                rating.setHintTextColor(Color.RED)
+            } else if(Integer.parseInt(rating.text.toString()) > 100 || Integer.parseInt( rating.text.toString()) < 1) {
+                errorText.text = "Rating must be between 1-100"
+                rating.setHintTextColor(Color.RED)
             } else if (description.text.isEmpty()) {
                 errorText.text = "Field must be complete"
                 description.setHintTextColor(Color.RED)
@@ -42,7 +43,7 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
 
                 val post = hashMapOf(
                     "movieName" to movieName.text.toString(),
-                    "movieRating" to ratingID.toString(),
+                    "movieRating" to rating.text.toString(),
                     "description" to description.text.toString()
                 )
 
@@ -57,6 +58,7 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
                             .show()
                         movieName.setText("")
                         description.setText("")
+                        rating.setText("")
 
 
                     }

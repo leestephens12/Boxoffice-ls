@@ -54,66 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMovieName" />
 
-    <RadioGroup
-        android:id="@+id/rdoMovieRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.05">
-
-        <RadioButton
-            android:id="@+id/characters1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="1"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:text="1" />
-
-        <RadioButton
-            android:id="@+id/characters2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="2"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:text="2" />
-
-        <RadioButton
-            android:id="@+id/characters3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="3"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:text="3" />
-
-        <RadioButton
-            android:id="@+id/characters4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="4"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:text="4" />
-
-        <RadioButton
-            android:id="@+id/characters5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:text="5"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:text="5" />
-
-    </RadioGroup>
-
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="368dp"
@@ -152,5 +92,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postBtn"
         app:layout_constraintVertical_bias="0.102" />
+
+    <EditText
+        android:id="@+id/editTextRating"
+        android:layout_width="43dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.571"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="68dp"
+        android:layout_height="32dp"
+        android:text="/100"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toEndOf="@+id/editTextRating"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.641" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
