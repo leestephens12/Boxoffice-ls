@@ -67,6 +67,10 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
                             .show()
                     }
 
+
+                /*
+                    Adds the post to the individual user post section to view them on profile
+                 */
                 db.collection("users").document(userID).collection("posts").document()
                     .set(post)
                     .addOnSuccessListener { documentReference ->

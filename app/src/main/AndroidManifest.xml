@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Boxofficels" >
         <activity
@@ -37,13 +37,6 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.LANDING" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".PostActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.POST" />
             </intent-filter>
         </activity>
     </application>
