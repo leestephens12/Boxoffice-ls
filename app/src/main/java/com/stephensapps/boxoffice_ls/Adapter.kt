@@ -16,9 +16,9 @@ class Adapter(private val postList:ArrayList<Post>):RecyclerView.Adapter<Adapter
     override fun onBindViewHolder(holder: Adapter.PostViewHolder, position: Int) {
 
         val post : Post = postList[position]
-        holder.movieName.text = post.movieName
-        holder.movieRating.text = post.movieRating
-        holder.movieDescription.text = post.description
+        holder.movieName.text = "Movie: " + post.movieName
+        holder.movieRating.text = "Rating: " + post.movieRating + "/100"
+        holder.movieDescription.text = "Comments: " + post.description
 
 
     }
