@@ -41,6 +41,7 @@ class FirstFragment:Fragment(R.layout.fragment_first) {
 
     private fun EventChangeListener() {
         auth = FirebaseAuth.getInstance()
+        val email = FirebaseAuth.getInstance().currentUser?.email
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         db = FirebaseFirestore.getInstance()
         db.collection("posts").orderBy("movieName").addSnapshotListener(object : EventListener<QuerySnapshot>{

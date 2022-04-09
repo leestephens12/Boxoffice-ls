@@ -16,6 +16,13 @@
 
 
         <TextView
+            android:id="@+id/postUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User: "
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/movieNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

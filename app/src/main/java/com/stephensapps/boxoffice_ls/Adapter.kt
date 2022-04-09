@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 
 class Adapter(private val postList:ArrayList<Post>):RecyclerView.Adapter<Adapter.PostViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.PostViewHolder {
@@ -16,6 +17,7 @@ class Adapter(private val postList:ArrayList<Post>):RecyclerView.Adapter<Adapter
     override fun onBindViewHolder(holder: Adapter.PostViewHolder, position: Int) {
 
         val post : Post = postList[position]
+        holder.email.text = "User: " + post.email
         holder.movieName.text = "Movie: " + post.movieName
         holder.movieRating.text = "Rating: " + post.movieRating + "/100"
         holder.movieDescription.text = "Comments: " + post.description
@@ -31,6 +33,7 @@ class Adapter(private val postList:ArrayList<Post>):RecyclerView.Adapter<Adapter
 
     public class PostViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
+        val email : TextView = itemView.findViewById(R.id.postUser)
         val movieName : TextView = itemView.findViewById(R.id.movieNameText)
         val movieRating : TextView = itemView.findViewById(R.id.movieRatingText)
         val movieDescription : TextView = itemView.findViewById(R.id.movieDescriptionText)

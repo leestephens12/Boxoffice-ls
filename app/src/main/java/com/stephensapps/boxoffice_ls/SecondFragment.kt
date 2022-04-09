@@ -23,6 +23,7 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
 
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         val db = Firebase.firestore
+        val email = FirebaseAuth.getInstance().currentUser?.email
 
         post.setOnClickListener {
             //Toast.makeText(context, rating, Toast.LENGTH_LONG)
@@ -42,6 +43,8 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
                 val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
                 val post = hashMapOf(
+
+                    "email" to email,
                     "movieName" to movieName.text.toString(),
                     "movieRating" to rating.text.toString(),
                     "description" to description.text.toString()
