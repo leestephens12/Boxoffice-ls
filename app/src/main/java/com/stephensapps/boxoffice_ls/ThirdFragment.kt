@@ -1,16 +1,23 @@
 package com.stephensapps.boxoffice_ls
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ThirdFragment:Fragment(R.layout.fragment_third) {
 
@@ -20,6 +27,7 @@ class ThirdFragment:Fragment(R.layout.fragment_third) {
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,8 +37,7 @@ class ThirdFragment:Fragment(R.layout.fragment_third) {
 
         auth = FirebaseAuth.getInstance()
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
-
-
+        val currentDate = LocalDateTime.now()
         recyclerView = view.findViewById(R.id.recyclerViewFeed)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
@@ -50,7 +57,7 @@ class ThirdFragment:Fragment(R.layout.fragment_third) {
         auth = FirebaseAuth.getInstance()
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         db = FirebaseFirestore.getInstance()
-        db.collection("users").document(userID).collection("posts").addSnapshotListener(object :
+        db.collection("users").document(userID).collection("posts").orderBy("movieName").addSnapshotListener(object :
             EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
 
