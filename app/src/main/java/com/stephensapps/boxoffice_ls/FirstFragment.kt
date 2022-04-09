@@ -43,7 +43,7 @@ class FirstFragment:Fragment(R.layout.fragment_first) {
         auth = FirebaseAuth.getInstance()
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         db = FirebaseFirestore.getInstance()
-        db.collection("users").document(userID).collection("posts").addSnapshotListener(object : EventListener<QuerySnapshot>{
+        db.collection("posts").addSnapshotListener(object : EventListener<QuerySnapshot>{
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
 
                 if(error != null) {

@@ -51,6 +51,22 @@ class SecondFragment:Fragment(R.layout.fragment_second) {
                 /*
                 Uploads users post to the db in a subclass collection
              */
+                db.collection("posts").document()
+                    .set(post)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(context, "post added to firestore", Toast.LENGTH_SHORT)
+                            .show()
+                        movieName.setText("")
+                        description.setText("")
+                        rating.setText("")
+
+
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
                 db.collection("users").document(userID).collection("posts").document()
                     .set(post)
                     .addOnSuccessListener { documentReference ->
